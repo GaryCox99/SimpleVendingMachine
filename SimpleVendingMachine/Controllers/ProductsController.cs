@@ -89,22 +89,6 @@ namespace SimpleVendingMachine.Controllers
             return product;
         }
 
-
-        // POST: api/Product
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPost]
-        public async Task<ActionResult<Product>> PostProduct(Product product)
-        {
-            Product p = new Product();
-            p.Id = product.Id;
-            p.Name = product.Name;
-            p.Cost = product.Cost;
-            p.Quantity = product.Quantity;
-            products[p.Id] = p;
-
-            return product;
-        }
-
         // PUT: api/Products/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
