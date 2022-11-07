@@ -27,6 +27,19 @@ namespace SimpleVendingMachine.Controllers
             return await _context.InvoiceItems.ToListAsync();
         }
 
+        // GET: InvoiceItems
+        [Route("[action]")]
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<InvoiceItem>>> GetInvoiceItemsByInvoice(int invoiceId)
+        {
+            var invoiceItems = await _context.InvoiceItems.Where(x => x.InvoiceId == invoiceId).ToListAsync();
+            if (invoiceItems.Count < 1)
+            {
+                return NotFound();
+            }
+            return invoiceItems;
+        }
+
         // GET: api/InvoiceItems/5
         [HttpGet("{id}")]
         public async Task<ActionResult<InvoiceItem>> GetInvoiceItem(int id)

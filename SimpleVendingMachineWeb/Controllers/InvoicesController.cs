@@ -4,8 +4,8 @@ using SimpleVendingMachine.Models;
 
 namespace SimpleVendingMachine.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class InvoicesController : ControllerBase
     {
         private readonly InvoiceContext _context;
@@ -15,16 +15,16 @@ namespace SimpleVendingMachine.Controllers
             _context = context;
         }
 
-        // GET: api/Invoices
+        // GET: Invoices
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Invoice>>> GetInvoices()
+        public async Task<ActionResult<IEnumerable<Invoice>>> Get()
         {
             return await _context.Invoices.ToListAsync();
         }
 
-        // GET: api/Invoices/5
+        // GET: Invoices/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Invoice>> GetInvoice(int id)
+        public async Task<ActionResult<Invoice>> Get(int id)
         {
             var invoice = await _context.Invoices.FindAsync(id);
 
@@ -36,10 +36,10 @@ namespace SimpleVendingMachine.Controllers
             return invoice;
         }
 
-        // PUT: api/Invoices/5
+        // PUT: Invoices/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutInvoice(int id, Invoice invoice)
+        public async Task<IActionResult> Put(int id, Invoice invoice)
         {
             if (id != invoice.Id)
             {
@@ -75,7 +75,7 @@ namespace SimpleVendingMachine.Controllers
             _context.Invoices.Add(invoice);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetInvoice), new { id = invoice.Id }, invoice);
+            return CreatedAtAction(nameof(Get), new { id = invoice.Id }, invoice);
         }
 
         private bool InvoiceExists(int id)
