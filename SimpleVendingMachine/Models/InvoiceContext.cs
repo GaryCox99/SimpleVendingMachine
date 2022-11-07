@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SimpleVendingMachineApi.Models;
 
 namespace SimpleVendingMachine.Models
 {
@@ -8,5 +9,6 @@ namespace SimpleVendingMachine.Models
             : base(options) { }
 
         public DbSet<Invoice> Invoices { get; set; } = null;
+
     }
 }

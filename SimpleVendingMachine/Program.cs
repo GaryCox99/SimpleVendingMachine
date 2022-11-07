@@ -2,6 +2,7 @@
 
 using Microsoft.EntityFrameworkCore;
 using SimpleVendingMachine.Models;
+using SimpleVendingMachineApi.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,6 +18,8 @@ builder.Services.AddDbContext<InvoiceContext>(opt =>
     opt.UseInMemoryDatabase("Invoice"));
 builder.Services.AddDbContext<InvoiceItemContext>(opt =>
     opt.UseInMemoryDatabase("InvoiceItem"));
+builder.Services.AddDbContext<PaymentContext>(opt =>
+    opt.UseInMemoryDatabase("Payment"));
 
 var app = builder.Build();
 
